@@ -9,7 +9,7 @@ exports.login = function (req, res) {
 loggedin = function (req, res, checkstate) {
    
     if (checkstate) {
-        res.render("AddAdmin");
+        res.render("addAdmin");
     }
     else {
         res.redirect('/');
@@ -20,7 +20,8 @@ exports.insertnewSystemAdmin = function (req,res)
     adminmodel.insertnewSystemAdmin(req,res,afterinsert);
 };
 afterinsert=function(req,res){
-
+        
+    res.render("addAdmin");
 }
 exports.deleteSystemAdmin= function(req,res)
 {

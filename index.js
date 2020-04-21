@@ -7,7 +7,7 @@ var db= require('./databaseconnection.js');
 var router = require('./routes/router');
 app.use('/router',router); 
 
-app.set('Views',__dirname);
+app.set('views', __dirname + '/View');
 
 app.get('/', function (req, res) {
    res.sendFile('LoginAdmin.html',{root: __dirname });

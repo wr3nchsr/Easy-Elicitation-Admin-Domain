@@ -6,6 +6,8 @@ var companyadmincontroller = require('../Controller/companyadmincontroller');
 
 
 console.log('Router Activated:....');
+
+
 /**----------SYSTEM ADMIN---------- **/
 router.get('/getalladmins',admincontroller.getAllSystemAdmins);
 router.get('/login',admincontroller.login);
