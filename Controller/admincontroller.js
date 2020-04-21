@@ -9,7 +9,7 @@ exports.login = function (req, res) {
 loggedin = function (req, res, checkstate) {
    
     if (checkstate) {
-        res.send("LOGGED IN SUCC" + req.query.email + " " + req.query.password);
+        res.render("AddAdmin");
     }
     else {
         res.redirect('/');
@@ -17,13 +17,18 @@ loggedin = function (req, res, checkstate) {
 }
 exports.insertnewSystemAdmin = function (req,res)
 {
-    adminmodel.insertnewSystemAdmin(req,res,callback);
+    adminmodel.insertnewSystemAdmin(req,res,afterinsert);
 };
+afterinsert=function(req,res){
 
+}
 exports.deleteSystemAdmin= function(req,res)
 {
-   adminmodel.deleteSystemAdmin (req,res,callback);
+   adminmodel.deleteSystemAdmin (req,res,afterdelete);
 };
+afterdelete=function(req,res){
+      res.redirect('/router/getalladmins');
+}
 
 exports.getAllSystemAdmins= function(req,res)
 {
@@ -33,7 +38,9 @@ exports.getAllSystemAdmins= function(req,res)
 getAllAdmins = function (req,res,result)
 {
 
-    // show all result of system admin 
+    res.render('viewalladmins',{
+        result:result
+    });
 }
 
 

@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
         rel="stylesheet">
     <!-- Main CSS-->
-    <link href="/css/main.css" rel="stylesheet" media="all">
+    <link href="../css/main.css" rel="stylesheet" media="all">
     <script>  // this script is to check the user existance in db update
         function validateLoginForm(form, event) {
             event.preventDefault();
@@ -58,15 +58,23 @@
 </head>
 
 <body>
-
-    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+    <div class="page-wrapper bg-light p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
-            <div class="card card-6">
                 <div class="card-heading">
-                    <h2 class="title">Login</h2>
+                    <h2 class="title-two">Add New Admin</h2>
                 </div>
                 <div class="card-body">
-                    <form method="GET" action="/router/login" name="loginform" onsubmit="return validateLoginForm(this,event)">
+                    <form method="GET" action="/router/insertnewadmin" name="loginform" onsubmit="return validateLoginForm(this,event)">
+                        <div class="form-row">
+                            <div class="name">Name</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text" name="name" id="name"
+                                        placeholder="Enter new admin's name">
+                                    <div name="nameerror" id="nameerror"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="name">Email address</div>
                             <div class="value">
@@ -80,17 +88,24 @@
                         <div class="form-row">
                             <div class="name">Password</div>
                             <div class="value">
-                                <input class="input--style-6" type="password" name="password" id="password">
+                                <input class="input--style-6" type="password" name="password" id="password"
+                                        placeholder="Enter password">
                                 <div name="error2" id="error2"></div>
                             </div>
-
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Confirm Password</div>
+                            <div class="value">
+                                <input class="input--style-6" type="password" name="confirm" id="confirm"
+                                    placeholder="Confirm password">
+                                <div name="comfirmerror" id="comfirmerror"></div>
+                            </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Login</button>
+                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Add</button>
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 </body>

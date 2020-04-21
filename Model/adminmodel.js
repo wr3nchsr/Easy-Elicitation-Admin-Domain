@@ -13,8 +13,8 @@ module.exports = {
             }
             if(checkStatus) //Add admin user name to the session
             {
-                req.session.username = result[0].username;
-                req.session.email = result[0].email;
+                // req.session.username = result[0].username;
+                // req.session.email = result[0].email;
             }
             callback(req,res,checkStatus);
 
@@ -38,8 +38,8 @@ module.exports = {
     },
     deleteSystemAdmin:function(req,res,callback)
     {
-        var name=req.query.name;
-        db.query("DELETE FROM systemadmin where VALUES name = \'"+name+ "\' ",function(err,result,field){
+        var id=req.query.adminid;
+        db.query("DELETE FROM systemadmin where AdminId = '"+id+ "'",function(err,result,field){
             if(err) throw err;
             callback(req,res,result);
         })

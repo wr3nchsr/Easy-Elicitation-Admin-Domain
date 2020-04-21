@@ -7,7 +7,7 @@ var db= require('./databaseconnection.js');
 var router = require('./routes/router');
 app.use('/router',router); 
 
-//app.set('Views',__dirname);
+app.set('Views',__dirname);
 
 app.get('/', function (req, res) {
    res.sendFile('LoginAdmin.html',{root: __dirname });
@@ -22,6 +22,12 @@ app.get('/', function (req, res) {
       res.setHeader('Access-Control-Allow-Credentials', true);
       next();
     });
+})
+app.get('/newadmin',function(req,res){
+   res.render('addAdmin');
+})
+app.get('/newcompanyadmin',function(req,res){
+   res.render('addcompanyadmin');
 })
 
 var server = app.listen(8081, function () {

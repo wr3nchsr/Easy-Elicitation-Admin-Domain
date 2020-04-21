@@ -16,15 +16,16 @@ module.exports = {
         var name=req.query.name;
         var email=req.query.email;
         var password=req.query.password;
-        db.query("INSERT INTO companyadmin (name,Email,password) VALUES ('"+name+"','"+email+"','"+password+"')",function(err,result,field){
+        var companyname=req.query.companyname;
+        db.query("INSERT INTO companyadmin (name,companyname,Email,password) VALUES ('"+name+"','"+companyname+"','"+email+"','"+password+"')",function(err,result,field){
             if(err) throw err;
             callback(req,res,result);
         })
     },
     deleteCompanyAdmin:function(req,res,callback)
     {
-        var name=req.query.name;
-        db.query("DELETE FROM companyadmin where VALUES name = \'"+name+ "\' ",function(err,result,field){
+        var id=req.query.adminid;
+        db.query("DELETE FROM companyadmin where AdminId = \'"+id+ "\' ",function(err,result,field){
             if(err) throw err;
             callback(req,res,result);
         })

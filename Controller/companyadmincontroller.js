@@ -6,7 +6,9 @@ exports.getallCompanyAdmin = function (req, res) {
 
 getAllCompAdmin = function (req,res,result)
 {
-    // dispaly all company admins
+    res.render('viewallcompany',{
+        result:result
+    })
 }
 
 exports.insertCompanyAdmin = function (req,res){
@@ -26,5 +28,5 @@ exports.deleteCompanyAdmin = function (req,res)
 
 deleteCompAdmin=function(req,res,result)
 {
-    // deleted success
+    res.redirect('/router/getallcompanyadmins');
 }
