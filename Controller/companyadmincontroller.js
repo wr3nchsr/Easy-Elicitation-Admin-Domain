@@ -1,19 +1,30 @@
-var admincontroller = require('../Model/admincontroller');
+var companyAdminModel= require('../Model/companyAdminModel');
 
-exports.login = function (req, res) {
-    var query="INSERT INTO company (username,email,password,telephone_number,CV) VALUES ('"+username+"','"+email+"','"+password+"','"+telephonenumber+"','"+CV+"')";
-    adminmodel.login(req, res, email, password, loggedin);
+exports.getallCompanyAdmin = function (req, res) {
+  companyAdminModel.getAllCompanyAdmins (req,res,getAllCompAdmin);
+};
 
+getAllCompAdmin = function (req,res,result)
+{
+    // dispaly all company admins
 }
 
-loggedin = function (req, res, checkstate) {
-    
+exports.insertCompanyAdmin = function (req,res){
 
-    if (checkstate) {
-        res.send("LOGGED IN SUCC" + req.query.email + " " + req.query.password);
-    }
-    else {
-        res.send("ERROR");
-    }
+    companyAdminModel.insertnewCompanyAdmin (req,res,insertCompAdmin);
+}
 
+insertCompAdmin = function (req,res,result)
+{
+ // display after inserted succ
+}
+
+exports.deleteCompanyAdmin = function (req,res)
+{
+    companyAdminModel.deleteCompanyAdmin(req,res,deleteCompAdmin);
+}
+
+deleteCompAdmin=function(req,res,result)
+{
+    // deleted success
 }

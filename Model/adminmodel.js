@@ -36,6 +36,14 @@ module.exports = {
             callback(req,res,result);
         })
     },
+    deleteSystemAdmin:function(req,res,callback)
+    {
+        var name=req.query.name;
+        db.query("DELETE FROM systemadmin where VALUES name = \'"+name+ "\' ",function(err,result,field){
+            if(err) throw err;
+            callback(req,res,result);
+        })
+    },
     
     
     
