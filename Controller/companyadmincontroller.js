@@ -12,13 +12,12 @@ getAllCompAdmin = function (req,res,result)
 }
 
 exports.insertCompanyAdmin = function (req,res){
-
-    companyAdminModel.insertnewCompanyAdmin (req,res,insertCompAdmin);
+    companyAdminModel.insertnewCompanyAdmin(req,res,insertCompAdmin);
 }
 
 insertCompAdmin = function (req,res,result)
 {
- // display after inserted succ
+    res.render("addCompanyAdmin");
 }
 
 exports.deleteCompanyAdmin = function (req,res)
