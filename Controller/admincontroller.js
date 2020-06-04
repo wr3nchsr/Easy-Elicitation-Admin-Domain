@@ -17,7 +17,7 @@ loggedin = function (req, res, checkstate) {
 }
 exports.insertnewSystemAdmin = function (req,res)
 {
-    adminmodel.insertnewSystemAdmin(req,res,afterinsert);
+    adminmodel.insertnewSystemAdmin(req,res,afterinsert)
 };
 afterinsert=function(req,res){
         
@@ -25,7 +25,7 @@ afterinsert=function(req,res){
 }
 exports.deleteSystemAdmin= function(req,res)
 {
-   adminmodel.deleteSystemAdmin (req,res,afterdelete);
+   adminmodel.deleteSystemAdmin(req,res,afterdelete);
 };
 afterdelete=function(req,res){
       res.redirect('/router/getalladmins');
@@ -33,12 +33,11 @@ afterdelete=function(req,res){
 
 exports.getAllSystemAdmins= function(req,res)
 {
-   adminmodel.getAllSystemAdmins (req,res,getAllAdmins);
+   adminmodel.getAllSystemAdmins(req,res,getAllAdmins);
 };
 
 getAllAdmins = function (req,res,result)
 {
-
     res.render('viewalladmins',{
         result:result
     });

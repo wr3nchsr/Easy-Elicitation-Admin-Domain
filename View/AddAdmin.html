@@ -23,22 +23,11 @@
                 document.getElementById("emailerror").innerHTML = "";
                 form.email.style.borderColor = "black";
             }
-            if(document.getElementById("error2").innerHTML != ""){
-                document.getElementById("error2").innerHTML = "";
-                form.password.style.borderColor = "black";
-            }
             if (form.email.value == "") {
                 form.email.focus();
                 form.email.style.borderColor = "red";
                 document.getElementById("emailerror").innerHTML = "please enter email";
                 document.getElementById("emailerror").style.color = "red";
-                result = false;
-            }
-            if(form.password.value == ""){
-                form.password.focus();
-                form.password.style.borderColor = "red";
-                document.getElementById("error2").innerHTML = "please enter password";
-                document.getElementById("error2").style.color = "red";
                 result = false;
             }
             if(!result){
@@ -47,11 +36,6 @@
             form.submit();
             return true;
         }
-        
-
-
-        
-    
     </script>
 
 
@@ -83,22 +67,6 @@
                                         placeholder="example@email.com">
                                     <div name="emailerror" id="emailerror"></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Password</div>
-                            <div class="value">
-                                <input class="input--style-6" type="password" name="password" id="password"
-                                        placeholder="Enter password">
-                                <div name="error2" id="error2"></div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Confirm Password</div>
-                            <div class="value">
-                                <input class="input--style-6" type="password" name="confirm" id="confirm"
-                                    placeholder="Confirm password">
-                                <div name="comfirmerror" id="comfirmerror"></div>
                             </div>
                         </div>
                         <div class="card-footer">

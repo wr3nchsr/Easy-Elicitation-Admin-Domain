@@ -18,14 +18,10 @@
     <script>  // this script is to check the user existance in db update
         function validateLoginForm(form, event) {
             event.preventDefault();
-            var result=true;
-            if(document.getElementById("emailerror").innerHTML != ""){
+            var result = true;
+            if (document.getElementById("emailerror").innerHTML != "") {
                 document.getElementById("emailerror").innerHTML = "";
                 form.email.style.borderColor = "black";
-            }
-            if(document.getElementById("error2").innerHTML != ""){
-                document.getElementById("error2").innerHTML = "";
-                form.password.style.borderColor = "black";
             }
             if (form.email.value == "") {
                 form.email.focus();
@@ -34,24 +30,17 @@
                 document.getElementById("emailerror").style.color = "red";
                 result = false;
             }
-            if(form.password.value == ""){
-                form.password.focus();
-                form.password.style.borderColor = "red";
-                document.getElementById("error2").innerHTML = "please enter password";
-                document.getElementById("error2").style.color = "red";
-                result = false;
-            }
-            if(!result){
+            if (!result) {
                 return result;
             }
             form.submit();
             return true;
         }
-        
 
 
-        
-    
+
+
+
     </script>
 
 
@@ -60,63 +49,49 @@
 <body>
     <div class="page-wrapper bg-light p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
-                <div class="card-heading">
-                    <h2 class="title-two">Add New Company Admin</h2>
-                </div>
-                <div class="card-body">
-                    <form method="GET" action="/router/insertcompanyadmin" name="loginform" onsubmit="return validateLoginForm(this,event)">
-                        <div class="form-row">
-                            <div class="name">Name</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-6" type="text" name="name" id="name"
-                                        placeholder="Enter new admin's name">
-                                    <div name="nameerror" id="nameerror"></div>
-                                </div>
+            <div class="card-heading">
+                <h2 class="title-two">Add New Company Admin</h2>
+            </div>
+            <div class="card-body">
+                <form method="GET" action="/router/insertcompanyadmin" name="loginform"
+                    onsubmit="return validateLoginForm(this,event)">
+                    <div class="form-row">
+                        <div class="name">Name</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-6" type="text" name="name" id="name"
+                                    placeholder="Enter new admin's name">
+                                <div name="nameerror" id="nameerror"></div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Company name</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-6" type="text" name="companyname" id="companyname"
-                                        placeholder="Enter new admin's company name">
-                                    <div name="nameerror" id="nameerror"></div>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Company name</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-6" type="text" name="companyname" id="companyname"
+                                    placeholder="Enter new admin's company name">
+                                <div name="nameerror" id="nameerror"></div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Email address</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" id="email"
-                                        placeholder="example@email.com">
-                                    <div name="emailerror" id="emailerror"></div>
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Email address</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-6" type="email" name="email" id="email"
+                                    placeholder="example@email.com">
+                                <div name="emailerror" id="emailerror"></div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Password</div>
-                            <div class="value">
-                                <input class="input--style-6" type="password" name="password" id="password"
-                                        placeholder="Enter password">
-                                <div name="error2" id="error2"></div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Confirm Password</div>
-                            <div class="value">
-                                <input class="input--style-6" type="password" name="confirm" id="confirm"
-                                    placeholder="Confirm password">
-                                <div name="comfirmerror" id="comfirmerror"></div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn--radius-2 btn--blue-2" type="submit">Add</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn--radius-2 btn--blue-2" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

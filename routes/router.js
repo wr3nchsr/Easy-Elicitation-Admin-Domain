@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-
+var session = require('express-session');
 var admincontroller=require('../Controller/admincontroller');
 var companyadmincontroller = require('../Controller/companyadmincontroller');
-
-
+const app = express();
+app.use(session({cookieName:'session', secret: 'session',saveUninitialized: true,resave: true}));
 console.log('Router Activated:....');
 
 
