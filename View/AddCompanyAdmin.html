@@ -19,9 +19,17 @@
         function validateLoginForm(form, event) {
             event.preventDefault();
             var result = true;
-            if (document.getElementById("emailerror").innerHTML != "") {
+            if(document.getElementById("emailerror").innerHTML != ""){
                 document.getElementById("emailerror").innerHTML = "";
                 form.email.style.borderColor = "black";
+            }
+            if(document.getElementById("nameerror").innerHTML != ""){
+                document.getElementById("nameerror").innerHTML = "";
+                form.name.style.borderColor = "black";
+            }
+            if(document.getElementById("companynameerror").innerHTML != ""){
+                document.getElementById("companynameerror").innerHTML = "";
+                form.name.style.borderColor = "black";
             }
             if (form.email.value == "") {
                 form.email.focus();
@@ -30,10 +38,39 @@
                 document.getElementById("emailerror").style.color = "red";
                 result = false;
             }
+            if (form.name.value == "") {
+                form.name.focus();
+                form.name.style.borderColor = "red";
+                document.getElementById("nameerror").innerHTML = "please enter username";
+                document.getElementById("nameerror").style.color = "red";
+                result = false;
+            }
+            if (form.name.value == "") {
+                form.name.focus();
+                form.name.style.borderColor = "red";
+                document.getElementById("companynameerror").innerHTML = "please enter company name";
+                document.getElementById("companynameerror").style.color = "red";
+                result = false;
+            }
             if (!result) {
                 return result;
             }
-            form.submit();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                    if (this.responseText === "email already exists") {
+                        document.getElementById("emailerror").innerHTML = this.responseText.toString()
+                        document.getElementById("emailerror").style.color = "red";
+                        form.email.style.borderColor = "red";
+                    }
+                    else {
+                        form.submit()
+                    }
+                }
+            };
+            xhttp.open("GET", "http://localhost:8081/checkemailcompany?email=" + form.email.value, true);
+            xhttp.send();
             return true;
         }
 
@@ -53,7 +90,7 @@
                 <h2 class="title-two">Add New Company Admin</h2>
             </div>
             <div class="card-body">
-                <form method="GET" action="/router/insertcompanyadmin" name="loginform"
+                <form method="POST" action="/insertcompanyadmin" name="loginform"
                     onsubmit="return validateLoginForm(this,event)">
                     <div class="form-row">
                         <div class="name">Name</div>
@@ -71,7 +108,7 @@
                             <div class="input-group">
                                 <input class="input--style-6" type="text" name="companyname" id="companyname"
                                     placeholder="Enter new admin's company name">
-                                <div name="nameerror" id="nameerror"></div>
+                                <div name="companynameerror" id="companynameerror"></div>
                             </div>
                         </div>
                     </div>

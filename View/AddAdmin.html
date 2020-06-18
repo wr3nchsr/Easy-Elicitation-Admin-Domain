@@ -23,6 +23,10 @@
                 document.getElementById("emailerror").innerHTML = "";
                 form.email.style.borderColor = "black";
             }
+            if(document.getElementById("nameerror").innerHTML != ""){
+                document.getElementById("nameerror").innerHTML = "";
+                form.name.style.borderColor = "black";
+            }
             if (form.email.value == "") {
                 form.email.focus();
                 form.email.style.borderColor = "red";
@@ -30,10 +34,32 @@
                 document.getElementById("emailerror").style.color = "red";
                 result = false;
             }
+            if (form.name.value == "") {
+                form.name.focus();
+                form.name.style.borderColor = "red";
+                document.getElementById("nameerror").innerHTML = "please enter username";
+                document.getElementById("nameerror").style.color = "red";
+                result = false;
+            }
             if(!result){
                 return result;
             }
-            form.submit();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                    if (this.responseText === "email already exists") {
+                        document.getElementById("emailerror").innerHTML = this.responseText.toString()
+                        document.getElementById("emailerror").style.color = "red";
+                        form.email.style.borderColor = "red";
+                    }
+                    else {
+                        form.submit()
+                    }
+                }
+            };
+            xhttp.open("GET", "http://localhost:8081/checkemail?email=" + form.email.value, true);
+            xhttp.send();
             return true;
         }
     </script>
@@ -48,7 +74,7 @@
                     <h2 class="title-two">Add New Admin</h2>
                 </div>
                 <div class="card-body">
-                    <form method="GET" action="/router/insertnewadmin" name="loginform" onsubmit="return validateLoginForm(this,event)">
+                    <form method="POST" action="/insertnewadmin" name="loginform" onsubmit="return validateLoginForm(this,event)">
                         <div class="form-row">
                             <div class="name">Name</div>
                             <div class="value">
