@@ -27,5 +27,8 @@ exports.deleteCompanyAdmin = function (req,res)
 
 deleteCompAdmin=function(req,res,result)
 {
-    res.redirect('/router/getallcompanyadmins');
+    res.redirect('/getallcompanyadmins');
+}
+exports.checkemail = function(req,res){
+    companyAdminModel.checkemailexistance(req,res)
 }
