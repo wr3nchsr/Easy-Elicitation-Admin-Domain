@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 
 var session = require('express-session');
-var pug = require('pug');
-app.set('view engine', 'pug');
+var ejs = require('ejs');
+app.set('view engine', 'ejs');
 var db= require('./databaseconnection.js');
 var router = require('./router');
 var bodyParser = require('body-parser');

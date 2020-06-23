@@ -12,11 +12,11 @@ router.get('/', function (req, res) {
       res.redirect('/newadmin')
    }
    else{
-    res.sendFile('LoginAdmin.html',{root: __dirname});
+    res.render('LoginAdmin')
    }
 })
 router.get('/forgotpassword',function(req,res){
-   res.sendFile('forgotpasswordpage.html',{root:__dirname + '/View'})
+   res.render('forgotpasswordpage')
 })
  router.get('/newadmin',function(req,res){
     res.render('addAdmin');

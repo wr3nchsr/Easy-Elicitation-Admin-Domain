@@ -172,6 +172,7 @@ module.exports = {
                             "\'", function (err, result, field) {
                                 if (err) throw err
                                 else {
+                                    console.log("send email")
                                     var emailsubject = "please reset your password"
                                     var emailtext = "Please use the following link to reset your password \n"
                                         + "http://localhost:8081/resetpassword/" + token + "?email=" + email

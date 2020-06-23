@@ -2,34 +2,28 @@
 <html lang="en">
 
 <head>
-  <title>Admin Domain</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
   <nav id="sidebar">
     <h1><a href="/newadmin" class="logo">Easy Elicitation System Admin Domain</a></h1>
     <ul class="list-unstyled components mb-5">
-      <li>
+      <li <% if(page === "addadmin"){ %> class="active" <% } %> >
         <a href="/newadmin"><span class="fa fa-user mr-3"></span> Add new System Admin</a>
       </li>
-      <li>
+      <li <% if(page === "viewalladmins"){ %> class="active" <% } %> >
         <a href="/getalladmins"><span class="fa fa-home mr-3"></span> View All System Admins</a>
       </li>
-      <li>
+      <li <% if(page === "viewallcompany"){ %> class="active" <% } %> >
         <a href="/getallcompanyadmins"><span class="fa fa-sticky-note mr-3"></span> View All Company Admins</a>
       </li>
-      <li>
+      <li <% if(page === "addcompanyadmin"){ %> class="active" <% } %> >
         <a href="/newcompanyadmin"><span class="fa fa-sticky-note mr-3"></span> Add new Company Admin</a>
       </li>
-      <li>
+      <li <% if(page === "editpassword"){ %> class="active" <% } %> >
         <a href="/editpasswordpage"><span class="fa fa-paper-plane mr-3"></span> Edit Password</a>
       </li>
-      <li>
+      <li <% if(page === "logout"){ %> class="active" <% } %> >
         <a href="/logout"><span class="fa fa-paper-plane mr-3"></span> Logout</a>
       </li>
     </ul>
