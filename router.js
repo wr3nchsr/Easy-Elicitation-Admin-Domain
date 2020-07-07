@@ -32,7 +32,6 @@ router.get('/forgotpassword',function(req,res){
     res.redirect('/');
  })
  router.get('/resetpassword/:token',function(req,res){
-    
     var token = req.params.token
     var email = req.query.email
     console.log(token)
