@@ -29,6 +29,7 @@ router.get('/forgotpassword',function(req,res){
  })
  router.get('/logout',function(req,res){
     req.session.destroy();
+   
     res.redirect('/');
  })
  router.get('/resetpassword/:token',function(req,res){

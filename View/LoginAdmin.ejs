@@ -52,7 +52,7 @@
                         alert("Invalid email or password")
                     }
                     else {
-                        form.submit()
+                        document.location="/newadmin";
                     }
                 }
             };
@@ -81,7 +81,7 @@
                     <h2 class="title">System Admin Login</h2>
                 </div>
                 <div class="card-body">
-                    <form method="GET" action="/newadmin" name="loginform" onsubmit="return validateLoginForm(this,event)">
+                    <form name="loginform" onsubmit="return validateLoginForm(this,event)">
                         <div class="form-row">
                             <div class="name">Email address</div>
                             <div class="value">

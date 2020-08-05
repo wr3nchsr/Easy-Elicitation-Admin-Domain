@@ -6,45 +6,20 @@ var session = require('express-session');
 const bcrypt = require('bcryptjs')
 var generator = require('generate-password');
 const nodemailer = require("nodemailer");
-var sendemail = require('../sendmail')
-const crypto = require('crypto')
-
+var sendemail = require('../sendmail');
+const crypto = require('crypto');
+const util = require('util');
+const query = util.promisify(db.query).bind(db);
 
 module.exports = {
-    login: function (req, res, callback) {
-        var checkStatus = true;
-        //get user firstly by email
-        db.query("select * from systemadmin where email = \'" + req.body.email + "\'", function (err, result, field) {
-            if (err) throw err;
-            else if (result.length == 0) {
-                res.send("Invalid email or password")
-                checkStatus = false;
-                // callback(req, res, false);
-            }
-            if (checkStatus) {
-                //compare given password from req with the hashed password saved in database
-                bcrypt.compare(req.body.password, result[0].password)
-                    .then(match => {
-                        if (!match) {
-                            res.send("Invalid email or password")
-                            // console.log("wrong password")
-                            // checkStatus = false
-                            // callback(req, res, false);
-                        }
-                        else { //Add admin name and email to the session
-                            req.session.name = result[0].name;
-                            req.session.email = result[0].email;
-                            req.session.id = result[0].systemAdminId;
-                            //console.log(req.session.name)
-                            req.session.save()
-                            res.send("successfully loggedin")
-                            //callback(req, res, true);
-                        }
-                    })
-
-            }
-
-        });
+    getSystemAdminByEmail: async function (email) {
+        let sql = "SELECT * FROM systemadmin WHERE email = ? ";
+        let inserts = [email]
+        sql = db.format(sql, inserts);
+        const output = await query(sql);
+        if (output.length === 1)
+            return output[0];
+        return null;
     },
     getAllSystemAdmins: function (req, res, callback) {
         console.log(req.session.name)
@@ -64,26 +39,11 @@ module.exports = {
             }
         });
     },
-    insertnewSystemAdmin: function (req, res, callback) {
-        var name = req.body.name;
-        var email = req.body.email;
-        //generates password for the new admin
-        var password = generator.generate({
-            length: 10,
-            numbers: true
-        });
-        console.log(password)
-        //hash password before saving it in database
-        bcrypt.hash(password, 12)
-            .then(hashedpassword => {
-                db.query("INSERT INTO systemadmin (name,email,password) VALUES ('" + name + "','" + email
-                    + "','" + hashedpassword + "')", function (err, result, field) {
-                        if (err) throw err;
-                        var emailtext = "A new Account was created for you as a System admin \n your usename is:"
-                            + name + "\n your password is: " + password + "\n You can change the password anytime from your account \n"
-                        sendemail.sendToNewAdmin(email, "Easy Elicitation System admin Account", emailtext)
-                        callback(req, res, result);
-                    })
+    insertnewSystemAdmin: async function (name, email, hashedpassword) {
+        db.query("INSERT INTO systemadmin (name,email,password) VALUES ('" + name + "','" + email
+            + "','" + hashedpassword + "')", function (err, result, field) {
+                if (err) throw err;
+                return result;
             })
     },
     deleteSystemAdmin: function (req, res, callback) {
