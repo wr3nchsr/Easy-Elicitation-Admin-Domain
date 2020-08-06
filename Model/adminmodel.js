@@ -85,27 +85,31 @@ module.exports = {
     },
     resetpassword: function (req, res) {
         var newpassword = req.body.password
-        console.log(newpassword)
         var email = req.body.email
         var token = req.body.token
-        console.log(token)
         db.query("select * from systemadmin where email = \'" + email + "\' and resetPasswordToken = \'" + token + "\'", function (err, result, field) {
             if (err) throw err
+            if(result.length==0){
+                res.send("user not found")
+            }
             else {
-                console.log("bye")
                 var expireToken = result[0].expireToken;
+                console.log(expireToken)
                 if (parseInt(expireToken) >= parseInt(Date.now().toString())) {
-                    console.log("hii")
                     bcrypt.hash(newpassword, 12)
                         .then(hashedpassword => {
                             db.query("update systemadmin set password = \'"
                                 + hashedpassword + "\',resetPasswordToken = null , expireToken = null where email = \'" + email +
-                                "\'", function (err, result, field) {
+                                "\'", function (err, ress, field) {
                                     if (err) throw err
-                                    res.send("password reset")
+                                    res.redirect('/')
+                                    return;
                                 })
                         })
+                }else{
+                    res.send('expired token');
                 }
+                
             }
         })
 

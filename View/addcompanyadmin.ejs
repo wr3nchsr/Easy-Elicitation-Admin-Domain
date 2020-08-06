@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Add Admin</title>
+    <title>Add Company Admin</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -28,7 +28,7 @@
             }
             if(document.getElementById("companynameerror").innerHTML != ""){
                 document.getElementById("companynameerror").innerHTML = "";
-                form.name.style.borderColor = "black";
+                form.companyname.style.borderColor = "black";
             }
             if (form.email.value == "") {
                 form.email.focus();
@@ -44,9 +44,9 @@
                 document.getElementById("nameerror").style.color = "red";
                 result = false;
             }
-            if (form.name.value == "") {
-                form.name.focus();
-                form.name.style.borderColor = "red";
+            if (form.companyname.value == "") {
+                form.companyname.focus();
+                form.companyname.style.borderColor = "red";
                 document.getElementById("companynameerror").innerHTML = "please enter company name";
                 document.getElementById("companynameerror").style.color = "red";
                 result = false;
