@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+  <nav id="sidebar">
+    <h1><a href="/newadmin" class="logo">Easy Elicitation System Admin Domain</a></h1>
+    <ul class="list-unstyled components mb-5">
+      <li <% if(page === "addadmin"){ %> class="active" <% } %> >
+        <a href="/newadmin"><span class="fa fa-user mr-3"></span> Add new System Admin</a>
+      </li>
+      <li <% if(page === "addcompanyadmin"){ %> class="active" <% } %> >
+        <a href="/newcompanyadmin"><span class="fa fa-user mr-3"></span> Add new Company Admin</a>
+      </li>
+      <li <% if(page === "viewalladmins"){ %> class="active" <% } %> >
+        <a href="/getalladmins"><span class="fa fa-th-list mr-3"></span> View All System Admins</a>
+      </li>
+      <li <% if(page === "viewallcompany"){ %> class="active" <% } %> >
+        <a href="/getallcompanyadmins"><span class="fa fa-th-list mr-3"></span> View All Company Admins</a>
+      </li>
+     
+      <li <% if(page === "editpassword"){ %> class="active" <% } %> >
+        <a href="/editpasswordpage"><span class="fa fa-edit mr-3"></span> Edit Password</a>
+      </li>
+      <li <% if(page === "logout"){ %> class="active" <% } %> >
+        <a href="/logout"><span class="fa fa-sign-out mr-3"></span> Logout</a>
+      </li>
+    </ul>
+
+  </nav>
+</body>
+
+</html>
