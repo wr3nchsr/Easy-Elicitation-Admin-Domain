@@ -19,7 +19,7 @@ router.get('/forgotpassword',function(req,res){
    res.render('forgotpasswordpage')
 })
  router.get('/newadmin',function(req,res){
-    res.render('addAdmin');
+    res.render('addadmin');
  })
  router.get('/editpasswordpage',function(req,res){
     res.render('Editpassword')
