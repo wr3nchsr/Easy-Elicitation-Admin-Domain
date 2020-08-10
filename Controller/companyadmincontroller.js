@@ -22,7 +22,7 @@ exports.insertCompanyAdmin = async function (req, res) {
     var emailtext = "A new Account was created for you as a company admin \n your usename is:"
         + name + "\n your password is: " + password + "\n You can change the password anytime from your account \n"
     sendemail.sendToNewAdmin(email, "Easy Elicitation company admin Account", emailtext)
-    res.render("addCompanyAdmin");
+    res.render("addcompanyadmin");
 }
 exports.deleteCompanyAdmin = async function (req, res) {
     var result = await companyAdminModel.deleteCompanyAdmin(req.query.adminid);
